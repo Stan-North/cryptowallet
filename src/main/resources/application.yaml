@@ -1,0 +1,6 @@
+server:
+  port: 8008
+api:
+  token: xCVqoMDWXQpoSpqNTCshp5Ua
+  url: https://api.coingecko.com/api/v3
+  header: x_cg_demo_api_key
