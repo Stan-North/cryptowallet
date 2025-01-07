@@ -1,7 +1,6 @@
 package com.javaacademy.cryptowallet.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.javaacademy.cryptowallet.entity.enums.Currency;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

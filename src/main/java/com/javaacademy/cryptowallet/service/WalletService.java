@@ -1,7 +1,6 @@
 package com.javaacademy.cryptowallet.service;
 
 import com.javaacademy.cryptowallet.dto.CreateWalletRequestDto;
-import com.javaacademy.cryptowallet.entity.enums.Currency;
 import com.javaacademy.cryptowallet.entity.Wallet;
 
 import java.math.BigDecimal;
