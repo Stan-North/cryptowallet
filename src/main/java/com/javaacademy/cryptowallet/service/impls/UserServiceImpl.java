@@ -1,4 +1,4 @@
-package com.javaacademy.cryptowallet.service;
+package com.javaacademy.cryptowallet.service.impls;
 
 import com.javaacademy.cryptowallet.dto.ResetPassRequestDto;
 import com.javaacademy.cryptowallet.dto.SaveUserDto;
@@ -6,6 +6,7 @@ import com.javaacademy.cryptowallet.entity.User;
 import com.javaacademy.cryptowallet.exception.user.PasswordDoesNotMatchException;
 import com.javaacademy.cryptowallet.exception.user.UserDoNotExistException;
 import com.javaacademy.cryptowallet.repo.UserRepository;
+import com.javaacademy.cryptowallet.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +22,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByLogin(String login) {
+    public User findByLogin(String login) {
         return repository.findByLogin(login).orElseThrow(UserDoNotExistException::new);
     }
 
     @Override
     public void resetPassword(ResetPassRequestDto dto) {
-        User user = getByLogin(dto.getLogin());
+        User user = findByLogin(dto.getLogin());
         if (!user.getPassword().equals(dto.getOldPassword())) {
             throw new PasswordDoesNotMatchException(PASSWORD_DOES_NOT_MATCH);
         }

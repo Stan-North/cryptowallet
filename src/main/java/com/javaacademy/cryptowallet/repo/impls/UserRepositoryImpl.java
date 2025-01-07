@@ -1,10 +1,11 @@
-package com.javaacademy.cryptowallet.repo;
+package com.javaacademy.cryptowallet.repo.impls;
 
 import com.javaacademy.cryptowallet.data_base.UsersDb;
 import com.javaacademy.cryptowallet.dto.SaveUserDto;
 import com.javaacademy.cryptowallet.entity.User;
 import com.javaacademy.cryptowallet.exception.user.UserAlreadyExistException;
 import com.javaacademy.cryptowallet.mapper.UserMapper;
+import com.javaacademy.cryptowallet.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

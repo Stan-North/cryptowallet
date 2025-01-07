@@ -6,6 +6,6 @@ import com.javaacademy.cryptowallet.entity.User;
 
 public interface UserService {
     void save(SaveUserDto saveUserDto);
-    User getByLogin(String login);
+    User findByLogin(String login);
     void resetPassword(ResetPassRequestDto dto);
 }

@@ -1,0 +1,7 @@
+api:
+  coingecko:
+    token: xCVqoMDWXQpoSpqNTCshp5Ua
+    url: https://api.coingecko.com/api/v3
+    header: x_cg_demo_api_key
+  cbr:
+    endpoint: https://www.cbr-xml-daily.ru/latest.js

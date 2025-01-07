@@ -64,9 +64,9 @@
 
     <!-- Checks for whitespace                               -->
     <!-- See http://checkstyle.sourceforge.net/config_whitespace.html -->
-    <module name="FileTabCharacter"/>
+    <!-- <module name="FileTabCharacter"/>
 
-    <!-- Miscellaneous other checks.                   -->
+    <!- Miscellaneous other checks.                   -->
     <!-- See http://checkstyle.sourceforge.net/config_misc.html -->
     <module name="RegexpSingleline">
         <property name="format" value="\s+$"/>

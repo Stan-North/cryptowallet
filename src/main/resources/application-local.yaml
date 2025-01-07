@@ -1,5 +1,3 @@
-server:
-  port: 8008
 currency:
   price: 10000
 exchange:
