@@ -5,6 +5,9 @@ import com.javaacademy.cryptowallet.dto.SaveUserDto;
 import com.javaacademy.cryptowallet.exception.user.PasswordDoesNotMatchException;
 import com.javaacademy.cryptowallet.exception.user.UserAlreadyExistException;
 import com.javaacademy.cryptowallet.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user")
+@Tag(name = "User controller", description = "Контроллер для работы с пользователями")
 public class UserController {
     private static final String USER_CREATED = "Пользователь успешно создан.";
     private static final String USER_ALREADY_EXIST = "Пользователь с таким логином уже существует.";
@@ -24,6 +28,10 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
+    @Operation(summary = "Регистрация пользователя",
+            description = "Принимает логин, имейл, пароль и регистрирует пользователя")
+    @ApiResponse(responseCode = "201", description = "Успешная регистрация пользователя")
+    @ApiResponse(responseCode = "409", description = "Пользователь уже существует")
     public ResponseEntity<String> signUp(@RequestBody SaveUserDto dto) {
         try {
             userService.save(dto);
@@ -34,6 +42,10 @@ public class UserController {
     }
 
     @PostMapping("/reset-password")
+    @Operation(summary = "Сброс пароля пользователя", description = "Принимает логин пользователя, "
+            + "старый и новый пароль, обновляет пароль")
+    @ApiResponse(responseCode = "200", description = "Пароль успешно обновлен")
+    @ApiResponse(responseCode = "409", description = "Старый пароль не совпадает")
     public ResponseEntity<String> resetPass(@RequestBody ResetPassRequestDto dto) {
         try {
             userService.resetPassword(dto);

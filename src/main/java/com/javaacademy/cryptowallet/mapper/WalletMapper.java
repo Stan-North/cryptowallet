@@ -14,7 +14,7 @@ import java.util.UUID;
 public class WalletMapper {
     private static final String CURRENCY_DOES_NOT_SUPPORT = "Указанная валюта не поддерживается";
 
-    public Wallet toWallet(CreateWalletRequestDto dto) {
+    public Wallet requestToWallet(CreateWalletRequestDto dto) {
         Currency currency;
         try {
             currency = Currency.valueOf(dto.getCurrency());
@@ -25,7 +25,6 @@ public class WalletMapper {
     }
 
     public WalletDto toDto(Wallet wallet) {
-        return new WalletDto(wallet.getCurrency(), wallet.getAmount());
+        return new WalletDto(wallet.getUserLogin(), wallet.getCurrency(), wallet.getAmount(), wallet.getUuid());
     }
-
 }

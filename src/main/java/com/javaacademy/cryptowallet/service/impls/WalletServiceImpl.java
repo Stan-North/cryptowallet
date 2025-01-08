@@ -1,6 +1,7 @@
 package com.javaacademy.cryptowallet.service.impls;
 
 import com.javaacademy.cryptowallet.dto.CreateWalletRequestDto;
+import com.javaacademy.cryptowallet.dto.WalletDto;
 import com.javaacademy.cryptowallet.entity.enums.Currency;
 import com.javaacademy.cryptowallet.entity.User;
 import com.javaacademy.cryptowallet.entity.Wallet;
@@ -33,19 +34,21 @@ public class WalletServiceImpl implements WalletService {
     private final WalletMapper walletMapper;
 
     @Override
-    public Wallet findByUuid(UUID uuid) {
-        return repository.findByID(uuid).orElseThrow(WalletDoesNotExistException::new);
+    public WalletDto findByUuid(UUID uuid) {
+        Wallet wallet = repository.findByID(uuid).orElseThrow(WalletDoesNotExistException::new);
+        return walletMapper.toDto(wallet);
     }
 
     @Override
-    public List<Wallet> findAll(String login) {
-        return repository.findAll(login).orElseThrow(WalletDoesNotExistException::new);
+    public List<WalletDto> findAll(String login) {
+        List<Wallet> wallets = repository.findAll(login).orElseThrow(WalletDoesNotExistException::new);
+        return wallets.stream().map(walletMapper::toDto).toList();
     }
 
     @Override
     public UUID save(CreateWalletRequestDto dto) {
         User user = userService.findByLogin(dto.getUserName());
-        Wallet wallet = walletMapper.toWallet(dto);
+        Wallet wallet = walletMapper.requestToWallet(dto);
         user.getWallets().add(wallet);
         repository.save(wallet);
         return wallet.getUuid();
@@ -53,14 +56,14 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public void deposit(UUID uuid, BigDecimal rubAmount) {
-        Wallet wallet = findByUuid(uuid);
+        Wallet wallet = repository.findByID(uuid).orElseThrow(WalletDoesNotExistException::new);
         BigDecimal cryptoCurrencyAmount = calculateCurrencyAmount(uuid, rubAmount);
         wallet.setAmount(wallet.getAmount().add(cryptoCurrencyAmount));
     }
 
     @Override
     public String withdraw(UUID uuid, BigDecimal rubAmount) {
-        Wallet wallet = findByUuid(uuid);
+        Wallet wallet = getWalletFromRep(uuid);
         BigDecimal cryptoCurrencyAmount = calculateCurrencyAmount(uuid, rubAmount);
         BigDecimal moneyOnWallet = wallet.getAmount();
         if (moneyOnWallet.compareTo(cryptoCurrencyAmount) < 0) {
@@ -72,7 +75,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public BigDecimal showWalletBalance(UUID uuid) {
-        Wallet wallet = findByUuid(uuid);
+        Wallet wallet = getWalletFromRep(uuid);
         BigDecimal cryptoCurrencyAmountInWallet = wallet.getAmount();
         BigDecimal usdPrice = findUsdPriceByWalletId(uuid);
         BigDecimal totalUsdPrice = usdPrice.multiply(cryptoCurrencyAmountInWallet);
@@ -82,16 +85,24 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public BigDecimal showAllWalletBalance(String login) {
         BigDecimal result = BigDecimal.ZERO;
-        for (Wallet wallet : findAll(login)) {
+        for (Wallet wallet : getAllWalletsFromRep(login)) {
             result = result.add(showWalletBalance(wallet.getUuid()));
         }
         return result;
     }
 
     private BigDecimal findUsdPriceByWalletId(UUID uuid) {
-        Wallet wallet = findByUuid(uuid);
+        Wallet wallet = getWalletFromRep(uuid);
         Currency currency = wallet.getCurrency();
         return currencyService.getUsdPrice(currency);
+    }
+
+    private Wallet getWalletFromRep(UUID uuid) {
+        return repository.findByID(uuid).orElseThrow(WalletDoesNotExistException::new);
+    }
+
+    private List<Wallet> getAllWalletsFromRep(String login) {
+        return repository.findAll(login).orElseThrow(WalletDoesNotExistException::new);
     }
 
     private BigDecimal calculateCurrencyAmount(UUID uuid, BigDecimal rubAmount) {

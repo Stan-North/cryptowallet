@@ -3,10 +3,10 @@ package com.javaacademy.cryptowallet.service.impls;
 import com.javaacademy.cryptowallet.entity.enums.Currency;
 import com.javaacademy.cryptowallet.exception.currency.ResponseException;
 import com.javaacademy.cryptowallet.service.CurrencyService;
-import com.javaacademy.cryptowallet.util.HttpClient;
 import com.jayway.jsonpath.JsonPath;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 @Profile("prod")
 public class CurrencyServiceImpl implements CurrencyService {
-    private final HttpClient client;
+    private final OkHttpClient client;
     @Value("${api.coingecko.url}")
     private String url;
     @Value("${api.coingecko.header}")
@@ -35,7 +35,7 @@ public class CurrencyServiceImpl implements CurrencyService {
     @SneakyThrows
     public BigDecimal getUsdPrice(Currency currency) {
         Request request = createRequest(currency);
-        Response response = client.getClient().newCall(request).execute();
+        Response response = client.newCall(request).execute();
         if (!response.isSuccessful() || response.body() == null) {
             throw new ResponseException(RESPONSE_EXCEPTION_MESSAGE);
         }

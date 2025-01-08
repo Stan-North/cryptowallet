@@ -1,198 +1,21 @@
-2025-01-07 19:17:21.382 [main] [34mINFO [0;39m c.j.c.CryptowalletApplication - Starting CryptowalletApplication using Java 17.0.12 with PID 96170 (/Users/stanislavkulbitski/Documents/Java learning/cryptowallet/target/classes started by stanislavkulbitski in /Users/stanislavkulbitski/Documents/Java learning/cryptowallet)
-2025-01-07 19:17:21.383 [main] [34mINFO [0;39m c.j.c.CryptowalletApplication - The following 1 profile is active: "prod"
-2025-01-07 19:17:22.035 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8008 (http)
-2025-01-07 19:17:22.042 [main] [34mINFO [0;39m o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-07 19:17:22.042 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
-2025-01-07 19:17:22.070 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-07 19:17:22.071 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 667 ms
-2025-01-07 19:17:22.635 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8008 (http) with context path '/'
-2025-01-07 19:17:22.641 [main] [34mINFO [0;39m c.j.c.CryptowalletApplication - Started CryptowalletApplication in 1.475 seconds (process running for 1.808)
-2025-01-07 19:17:41.395 [http-nio-8008-exec-1] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-07 19:17:41.404 [http-nio-8008-exec-1] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-01-07 19:17:41.409 [http-nio-8008-exec-1] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
-2025-01-07 19:17:41.467 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/user/signup, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.UserController.signUp
-2025-01-07 19:17:41.468 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.save
-METHOD ARGUMENTS: [[com.javaacademy.cryptowallet.dto.SaveUserDto@46805aef]]
-2025-01-07 19:17:41.469 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <201 CREATED Created,Пользователь успешно создан.,[]>
-2025-01-07 19:17:42.357 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/user/signup, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.UserController.signUp
-2025-01-07 19:17:42.357 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.save
-METHOD ARGUMENTS: [[com.javaacademy.cryptowallet.dto.SaveUserDto@3552ce46]]
-2025-01-07 19:17:42.358 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <409 CONFLICT Conflict,Пользователь с таким логином уже существует.,[]>
-2025-01-07 19:17:45.415 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.create
-2025-01-07 19:17:45.416 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.save
-METHOD ARGUMENTS: [[com.javaacademy.cryptowallet.dto.CreateWalletRequestDto@3b8fe79e]]
-2025-01-07 19:17:45.416 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:17:45.417 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <201 CREATED Created,Счет успешно создан. ID созданного кошелька:
-259b4aec-7338-4a85-ac8c-7066b4061f30,[]>
-2025-01-07 19:17:51.439 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/refill, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.refill
-2025-01-07 19:17:51.440 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.deposit
-METHOD ARGUMENTS: [[25440ad7-996c-4f5e-8ee9-d688ef7120f1, 10000]]
-2025-01-07 19:17:51.440 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <404 NOT_FOUND Not Found,Счет с указанным Id не существует,[]>
-2025-01-07 19:17:55.989 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/refill, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.refill
-2025-01-07 19:17:55.989 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.deposit
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 10000]]
-2025-01-07 19:17:55.990 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:17:56.406 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toUsd
-METHOD ARGUMENTS: [[10000]]
-2025-01-07 19:17:56.733 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Счет успешно пополнен,[]>
-2025-01-07 19:18:02.104 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:18:02.105 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:02.105 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:02.105 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d],[]>
-2025-01-07 19:18:09.763 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/balance/259b4aec-7338-4a85-ac8c-7066b4061f30, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getRubleWalletBalance
-2025-01-07 19:18:09.764 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.showWalletBalance
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30]]
-2025-01-07 19:18:09.764 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:18:09.860 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toRub
-METHOD ARGUMENTS: [[98.3413806]]
-2025-01-07 19:18:09.912 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Баланс счета: 9999.3269410,[]>
-2025-01-07 19:18:12.819 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/balance, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAllWalletsRubleBalance
-2025-01-07 19:18:12.820 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.showAllWalletBalance
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:12.820 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:12.822 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:18:12.901 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toRub
-METHOD ARGUMENTS: [[98.3413806]]
-2025-01-07 19:18:12.946 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Баланс всех счетов: 9999.3269410,[]>
-2025-01-07 19:18:25.579 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/withdrawal, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.withdraw
-2025-01-07 19:18:25.580 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.withdraw
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 15000]]
-2025-01-07 19:18:25.580 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:18:25.860 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toUsd
-METHOD ARGUMENTS: [[15000]]
-2025-01-07 19:18:25.911 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <400 BAD_REQUEST Bad Request,На указанном счете недостаточно денег для снятия,[]>
-2025-01-07 19:18:30.399 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/withdrawal, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.withdraw
-2025-01-07 19:18:30.399 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.withdraw
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 10000]]
-2025-01-07 19:18:30.399 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:18:30.492 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toUsd
-METHOD ARGUMENTS: [[10000]]
-2025-01-07 19:18:30.593 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Операция прошла успешно. Продано 0.0010074 BTC,[]>
-2025-01-07 19:18:34.808 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/balance, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAllWalletsRubleBalance
-2025-01-07 19:18:34.809 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.showAllWalletBalance
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:34.809 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:34.810 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:18:34.882 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toRub
-METHOD ARGUMENTS: [[0E-7]]
-2025-01-07 19:18:34.941 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Баланс всех счетов: 0E-7,[]>
-2025-01-07 19:18:38.366 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/balance/259b4aec-7338-4a85-ac8c-7066b4061f30, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getRubleWalletBalance
-2025-01-07 19:18:38.367 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.showWalletBalance
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30]]
-2025-01-07 19:18:38.367 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:18:38.413 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <500 INTERNAL_SERVER_ERROR Internal Server Error,Не удалось получить стоимость. Ответ с криптобиржи не получен или не содержит тела ответа,[]>
-2025-01-07 19:18:41.093 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:18:41.094 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:41.094 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:41.094 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d],[]>
-2025-01-07 19:18:43.959 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:18:43.959 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:43.959 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:43.959 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d],[]>
-2025-01-07 19:18:44.849 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:18:44.850 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:44.850 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:44.850 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d],[]>
-2025-01-07 19:18:45.819 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:18:45.820 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:45.820 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:45.820 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d],[]>
-2025-01-07 19:18:52.455 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:18:52.456 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:52.456 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:18:52.456 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d],[]>
-2025-01-07 19:18:55.622 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/refill, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.refill
-2025-01-07 19:18:55.623 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.deposit
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 10000]]
-2025-01-07 19:18:55.623 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:18:55.846 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <500 INTERNAL_SERVER_ERROR Internal Server Error,Не удалось получить стоимость. Ответ с криптобиржи не получен или не содержит тела ответа,[]>
-2025-01-07 19:19:05.275 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/refill, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.refill
-2025-01-07 19:19:05.276 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.deposit
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 10000]]
-2025-01-07 19:19:05.276 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:19:05.325 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <500 INTERNAL_SERVER_ERROR Internal Server Error,Не удалось получить стоимость. Ответ с криптобиржи не получен или не содержит тела ответа,[]>
-2025-01-07 19:19:10.076 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/withdrawal, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.withdraw
-2025-01-07 19:19:10.076 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.withdraw
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 10000]]
-2025-01-07 19:19:10.077 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:19:10.114 [http-nio-8008-exec-10] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <500 INTERNAL_SERVER_ERROR Internal Server Error,Не удалось получить стоимость. Ответ с криптобиржи не получен или не содержит тела ответа,[]>
-2025-01-07 19:19:15.952 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.create
-2025-01-07 19:19:15.953 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.save
-METHOD ARGUMENTS: [[com.javaacademy.cryptowallet.dto.CreateWalletRequestDto@2f2ed3dc]]
-2025-01-07 19:19:15.953 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:19:15.953 [http-nio-8008-exec-1] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <201 CREATED Created,Счет успешно создан. ID созданного кошелька:
-82c8f01e-4797-4385-b18b-37597e1deb08,[]>
-2025-01-07 19:19:18.816 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:19:18.816 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:19:18.817 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:19:18.817 [http-nio-8008-exec-2] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d, com.javaacademy.cryptowallet.entity.Wallet@13de975b],[]>
-2025-01-07 19:19:51.535 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:19:51.540 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:19:51.540 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:19:51.541 [http-nio-8008-exec-3] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d, com.javaacademy.cryptowallet.entity.Wallet@13de975b],[]>
-2025-01-07 19:19:56.029 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/refill, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.refill
-2025-01-07 19:19:56.030 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.deposit
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 10000]]
-2025-01-07 19:19:56.030 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:19:56.099 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toUsd
-METHOD ARGUMENTS: [[10000]]
-2025-01-07 19:19:56.140 [http-nio-8008-exec-4] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Счет успешно пополнен,[]>
-2025-01-07 19:19:59.027 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAll
-2025-01-07 19:19:59.028 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.findAll
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:19:59.028 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:19:59.029 [http-nio-8008-exec-5] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,[com.javaacademy.cryptowallet.entity.Wallet@4450191d, com.javaacademy.cryptowallet.entity.Wallet@13de975b],[]>
-2025-01-07 19:20:06.380 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/withdrawal, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.withdraw
-2025-01-07 19:20:06.380 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.withdraw
-METHOD ARGUMENTS: [[259b4aec-7338-4a85-ac8c-7066b4061f30, 8000]]
-2025-01-07 19:20:06.380 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:20:06.462 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toUsd
-METHOD ARGUMENTS: [[8000]]
-2025-01-07 19:20:06.529 [http-nio-8008-exec-6] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Операция прошла успешно. Продано 0.0008059 BTC,[]>
-2025-01-07 19:20:11.727 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/cryptowallet/balance, HTTP METHOD: GET, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.WalletController.getAllWalletsRubleBalance
-2025-01-07 19:20:11.730 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.WalletServiceImpl.showAllWalletBalance
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:20:11.731 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.findByLogin
-METHOD ARGUMENTS: [[first]]
-2025-01-07 19:20:11.731 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:20:11.805 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toRub
-METHOD ARGUMENTS: [[19.6702285]]
-2025-01-07 19:20:11.860 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.CurrencyServiceImpl.getUsdPrice
-METHOD ARGUMENTS: [[BTC]]
-2025-01-07 19:20:11.927 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.RubleConverterServiceImpl.toRub
-METHOD ARGUMENTS: [[0]]
-2025-01-07 19:20:12.014 [http-nio-8008-exec-7] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Баланс всех счетов: 2000.0639057,[]>
+2025-01-08 18:57:35.423 [main] [34mINFO [0;39m c.j.c.CryptowalletApplication - Starting CryptowalletApplication using Java 17.0.12 with PID 98043 (/Users/stanislavkulbitski/Documents/Java learning/cryptowallet/target/classes started by stanislavkulbitski in /Users/stanislavkulbitski/Documents/Java learning/cryptowallet)
+2025-01-08 18:57:35.426 [main] [34mINFO [0;39m c.j.c.CryptowalletApplication - The following 1 profile is active: "prod"
+2025-01-08 18:57:36.089 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8008 (http)
+2025-01-08 18:57:36.095 [main] [34mINFO [0;39m o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-08 18:57:36.095 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-01-08 18:57:36.123 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-08 18:57:36.123 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 670 ms
+2025-01-08 18:57:36.666 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8008 (http) with context path '/'
+2025-01-08 18:57:36.672 [main] [34mINFO [0;39m c.j.c.CryptowalletApplication - Started CryptowalletApplication in 1.511 seconds (process running for 1.805)
+2025-01-08 18:57:44.766 [http-nio-8008-exec-1] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-08 18:57:44.766 [http-nio-8008-exec-1] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-08 18:57:44.767 [http-nio-8008-exec-1] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-01-08 18:57:45.068 [http-nio-8008-exec-4] [34mINFO [0;39m o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 171 ms
+2025-01-08 18:58:24.255 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/user/signup, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.UserController.signUp
+2025-01-08 18:58:24.256 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.save
+METHOD ARGUMENTS: [[com.javaacademy.cryptowallet.dto.SaveUserDto@13209d59]]
+2025-01-08 18:58:24.258 [http-nio-8008-exec-8] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <201 CREATED Created,Пользователь успешно создан.,[]>
+2025-01-08 18:58:41.157 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - NEW REQUEST: IP: 127.0.0.1, URL: http://localhost:8008/user/reset-password, HTTP METHOD: POST, CONTROLLER METHOD: com.javaacademy.cryptowallet.controller.UserController.resetPass
+2025-01-08 18:58:41.158 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - RUN SERVICE: SERVICE METHOD: com.javaacademy.cryptowallet.service.impls.UserServiceImpl.resetPassword
+METHOD ARGUMENTS: [[com.javaacademy.cryptowallet.dto.ResetPassRequestDto@300813d2]]
+2025-01-08 18:58:41.158 [http-nio-8008-exec-9] [34mINFO [0;39m c.j.c.aspect.LoggingAspect - Return value: <200 OK OK,Пароль успешно изменен.,[]>

@@ -1,10 +1,10 @@
 package com.javaacademy.cryptowallet.service.impls;
 
 import com.javaacademy.cryptowallet.service.RubleConverterService;
-import com.javaacademy.cryptowallet.util.HttpClient;
 import com.jayway.jsonpath.JsonPath;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +18,7 @@ import java.math.RoundingMode;
 @RequiredArgsConstructor
 @Profile("prod")
 public class RubleConverterServiceImpl implements RubleConverterService {
-    private final HttpClient client;
+    private final OkHttpClient client;
     @Value("${api.cbr.endpoint}")
     private String endpoint;
     private static final String PATH_TO_RATE = "$.rates.USD";
@@ -41,7 +41,7 @@ public class RubleConverterServiceImpl implements RubleConverterService {
                 .get()
                 .url(endpoint)
                 .build();
-        Response response = client.getClient().newCall(request).execute();
+        Response response = client.newCall(request).execute();
         return JsonPath.parse(response.body().string()).read(JsonPath.compile(PATH_TO_RATE), BigDecimal.class);
     }
 }

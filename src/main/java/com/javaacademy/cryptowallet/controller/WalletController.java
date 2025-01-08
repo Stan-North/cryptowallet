@@ -2,12 +2,19 @@ package com.javaacademy.cryptowallet.controller;
 
 import com.javaacademy.cryptowallet.dto.CreateWalletRequestDto;
 import com.javaacademy.cryptowallet.dto.WalletActionDto;
+import com.javaacademy.cryptowallet.dto.WalletDto;
 import com.javaacademy.cryptowallet.exception.currency.CurrencyDoesNotSupportException;
 import com.javaacademy.cryptowallet.exception.currency.ResponseException;
 import com.javaacademy.cryptowallet.exception.user.UserDoNotExistException;
 import com.javaacademy.cryptowallet.exception.wallet.WalletDoesNotExistException;
 import com.javaacademy.cryptowallet.exception.wallet.WalletHasNotEnoughMoney;
 import com.javaacademy.cryptowallet.service.WalletService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +31,7 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/cryptowallet")
+@Tag(name = "Wallet controller", description = "Контроллер для работы со счетами криптовалют")
 public class WalletController {
     private static final String USER_NOT_FOUND = "Пользователь с таким именем не найден";
     private static final String CURRENCY_DOES_NOT_SUPPORT = "Указанная валюта не поддерживается."
@@ -39,6 +47,10 @@ public class WalletController {
     private final WalletService walletService;
 
     @PostMapping
+    @Operation(summary = "создает новый криптосчет", description = "принимает логин пользователя и криптовалюту счета")
+    @ApiResponse(responseCode = "201", description = "Криптосчет успешно создан")
+    @ApiResponse(responseCode = "404", description = "Пользователь не найден")
+    @ApiResponse(responseCode = "400", description = "Валюта не поддерживается")
     public ResponseEntity<String> create(@RequestBody CreateWalletRequestDto dto) {
         try {
             UUID uuid = walletService.save(dto);
@@ -51,6 +63,14 @@ public class WalletController {
     }
 
     @GetMapping
+    @Operation(summary = "Получает список всех счетов пользователя", description = "принимает логин пользователя"
+            + "в параметре и выводит список всех счетов пользователя")
+    @ApiResponse(responseCode = "200", description = "Возвращает список криптосчетов",
+            content = {
+                    @Content(mediaType = "application.json",
+                            array = @ArraySchema(schema = @Schema(implementation = WalletDto.class)))
+            })
+    @ApiResponse(responseCode = "404", description = "Пользователь не найден")
     public ResponseEntity<?> getAll(@RequestParam String username) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(walletService.findAll(username));
@@ -60,6 +80,10 @@ public class WalletController {
     }
 
     @PostMapping("/refill")
+    @Operation(summary = "Пополняет счет в рублях", description = "принимает id кошелька и сумму пополнения в рублях")
+    @ApiResponse(responseCode = "200", description = "Счет успешно пополнен")
+    @ApiResponse(responseCode = "404", description = "Счет для пополнения не найден")
+    @ApiResponse(responseCode = "500", description = "Ошибка при получении стоимости криптовалюты")
     public ResponseEntity<String> refill(@RequestBody WalletActionDto dto) {
         try {
             walletService.deposit(dto.getAccountId(), dto.getRublesAmount());
@@ -72,6 +96,11 @@ public class WalletController {
     }
 
     @PostMapping("/withdrawal")
+    @Operation(summary = "Снятие рублей со счета", description = "принимает id кошелька и сумму снятия в рублях")
+    @ApiResponse(responseCode = "200", description = "Успешное списание со счета")
+    @ApiResponse(responseCode = "404", description = "Счет не найден")
+    @ApiResponse(responseCode = "500", description = "Ошибка при получении стоимости криптовалюты")
+    @ApiResponse(responseCode = "400", description = "На счете не достаточно денег для списания")
     public ResponseEntity<?> withdraw(@RequestBody WalletActionDto dto) {
         try {
             return ResponseEntity.ok().body(walletService.withdraw(dto.getAccountId(), dto.getRublesAmount()));
@@ -85,6 +114,10 @@ public class WalletController {
     }
 
     @GetMapping("/balance/{id}")
+    @Operation(summary = "Вывод баланса счета", description = "принимает id кошелька в параметре запроса")
+    @ApiResponse(responseCode = "200", description = "Вывод баланса счета в рублях")
+    @ApiResponse(responseCode = "404", description = "Счет не найден")
+    @ApiResponse(responseCode = "500", description = "Ошибка при получении стоимости криптовалюты")
     public ResponseEntity<String> getRubleWalletBalance(@PathVariable UUID id) {
         try {
             return ResponseEntity.ok().body(WALLET_BALANCE + walletService.showWalletBalance(id));
@@ -96,6 +129,10 @@ public class WalletController {
     }
 
     @GetMapping("/balance")
+    @Operation(summary = "Вывод баланса всех счетов", description = "принимает логин пользователя в параметре запроса")
+    @ApiResponse(responseCode = "200", description = "Вывод баланса всех счетов в рублях")
+    @ApiResponse(responseCode = "404", description = "Пользователь не найден")
+    @ApiResponse(responseCode = "500", description = "Ошибка при получении стоимости криптовалюты")
     public ResponseEntity<?> getAllWalletsRubleBalance(@RequestParam String username) {
         try {
             return ResponseEntity.ok().body(ALL_WALLET_BALANCE + walletService.showAllWalletBalance(username));
