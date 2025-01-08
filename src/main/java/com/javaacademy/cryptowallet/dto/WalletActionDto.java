@@ -14,8 +14,8 @@ import java.util.UUID;
 public class WalletActionDto {
     @JsonProperty("account_id")
     @Schema(description = "id счета")
-    private UUID accountId;
+    private final UUID accountId;
     @JsonProperty("rubles_amount")
     @Schema(description = "сумма в рублях")
-    private BigDecimal rublesAmount;
+    private final BigDecimal rublesAmount;
 }

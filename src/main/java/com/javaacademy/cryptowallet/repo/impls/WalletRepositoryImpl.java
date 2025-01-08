@@ -1,6 +1,6 @@
 package com.javaacademy.cryptowallet.repo.impls;
 
-import com.javaacademy.cryptowallet.data_base.WalletDb;
+import com.javaacademy.cryptowallet.data_base.WalletsDb;
 import com.javaacademy.cryptowallet.entity.Wallet;
 import com.javaacademy.cryptowallet.exception.wallet.WalletAlreadyExistException;
 import com.javaacademy.cryptowallet.repo.WalletRepository;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class WalletRepositoryImpl implements WalletRepository {
     private static final String WALLET_EXIST_EXCEPTION_MESSAGE = "Счет уже существует";
-    private final WalletDb walletDb;
+    private final WalletsDb walletDb;
     private final UserService userService;
 
     @Override

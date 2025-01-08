@@ -8,5 +8,4 @@ public class CryptowalletApplication {
     public static void main(String[] args) {
         SpringApplication.run(CryptowalletApplication.class, args);
     }
-
 }

@@ -57,28 +57,28 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public void deposit(UUID uuid, BigDecimal rubAmount) {
         Wallet wallet = repository.findByID(uuid).orElseThrow(WalletDoesNotExistException::new);
-        BigDecimal cryptoCurrencyAmount = calculateCurrencyAmount(uuid, rubAmount);
-        wallet.setAmount(wallet.getAmount().add(cryptoCurrencyAmount));
+        BigDecimal currencyAmountInWallet = currencyAmountInRuble(uuid, rubAmount);
+        wallet.setAmount(wallet.getAmount().add(currencyAmountInWallet));
     }
 
     @Override
     public String withdraw(UUID uuid, BigDecimal rubAmount) {
         Wallet wallet = getWalletFromRep(uuid);
-        BigDecimal cryptoCurrencyAmount = calculateCurrencyAmount(uuid, rubAmount);
+        BigDecimal currencyAmountInWallet = currencyAmountInRuble(uuid, rubAmount);
         BigDecimal moneyOnWallet = wallet.getAmount();
-        if (moneyOnWallet.compareTo(cryptoCurrencyAmount) < 0) {
+        if (moneyOnWallet.compareTo(currencyAmountInWallet) < 0) {
             throw new WalletHasNotEnoughMoney(NOT_ENOUGH_MONEY_MESSAGE);
         }
-        wallet.setAmount(wallet.getAmount().subtract(cryptoCurrencyAmount));
-        return String.format(SUCCESS_WITHDRAW_MESSAGE, cryptoCurrencyAmount, wallet.getCurrency());
+        wallet.setAmount(wallet.getAmount().subtract(currencyAmountInWallet));
+        return String.format(SUCCESS_WITHDRAW_MESSAGE, currencyAmountInWallet, wallet.getCurrency());
     }
 
     @Override
     public BigDecimal showWalletBalance(UUID uuid) {
         Wallet wallet = getWalletFromRep(uuid);
-        BigDecimal cryptoCurrencyAmountInWallet = wallet.getAmount();
-        BigDecimal usdPrice = findUsdPriceByWalletId(uuid);
-        BigDecimal totalUsdPrice = usdPrice.multiply(cryptoCurrencyAmountInWallet);
+        BigDecimal currencyAmountInWallet = wallet.getAmount();
+        BigDecimal currencyUsdPrice = findCurrencyUsdPriceByWalletId(uuid);
+        BigDecimal totalUsdPrice = currencyUsdPrice.multiply(currencyAmountInWallet);
         return rubleConverterService.toRub(totalUsdPrice);
     }
 
@@ -91,7 +91,7 @@ public class WalletServiceImpl implements WalletService {
         return result;
     }
 
-    private BigDecimal findUsdPriceByWalletId(UUID uuid) {
+    private BigDecimal findCurrencyUsdPriceByWalletId(UUID uuid) {
         Wallet wallet = getWalletFromRep(uuid);
         Currency currency = wallet.getCurrency();
         return currencyService.getUsdPrice(currency);
@@ -105,8 +105,8 @@ public class WalletServiceImpl implements WalletService {
         return repository.findAll(login).orElseThrow(WalletDoesNotExistException::new);
     }
 
-    private BigDecimal calculateCurrencyAmount(UUID uuid, BigDecimal rubAmount) {
-        BigDecimal currencyUsdPrice = findUsdPriceByWalletId(uuid);
+    private BigDecimal currencyAmountInRuble(UUID uuid, BigDecimal rubAmount) {
+        BigDecimal currencyUsdPrice = findCurrencyUsdPriceByWalletId(uuid);
         BigDecimal usdAmount = rubleConverterService.toUsd(rubAmount);
         return usdAmount.divide(currencyUsdPrice, RoundingMode.DOWN);
     }

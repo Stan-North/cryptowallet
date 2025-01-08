@@ -11,8 +11,8 @@ import lombok.RequiredArgsConstructor;
 public class CreateWalletRequestDto {
     @JsonProperty("username")
     @Schema(description = "логин пользователя")
-    private String userName;
+    private final String userName;
     @JsonProperty("crypto_type")
     @Schema(description = "Валюта кошелька")
-    private String currency;
+    private final String currency;
 }
