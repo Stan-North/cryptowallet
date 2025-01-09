@@ -88,7 +88,7 @@ public class WalletController {
         } catch (WalletDoesNotExistException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(WALLET_DOES_NOT_EXIST);
         } catch (ResponseException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(CRYPTO_RESPONSE_FAILURE);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(CRYPTO_RESPONSE_FAILURE);
         }
     }
 
@@ -106,7 +106,7 @@ public class WalletController {
         } catch (WalletHasNotEnoughMoney e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(WALLET_HAS_NOT_ENOUGH_MONEY);
         } catch (ResponseException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(CRYPTO_RESPONSE_FAILURE);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(CRYPTO_RESPONSE_FAILURE);
         }
     }
 
@@ -122,7 +122,7 @@ public class WalletController {
         } catch (WalletDoesNotExistException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(WALLET_DOES_NOT_EXIST);
         } catch (ResponseException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(CRYPTO_RESPONSE_FAILURE);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(CRYPTO_RESPONSE_FAILURE);
         }
     }
 
@@ -138,7 +138,7 @@ public class WalletController {
         } catch (UserDoNotExistException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(USER_NOT_FOUND);
         } catch (ResponseException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(CRYPTO_RESPONSE_FAILURE);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(CRYPTO_RESPONSE_FAILURE);
         }
     }
 }
