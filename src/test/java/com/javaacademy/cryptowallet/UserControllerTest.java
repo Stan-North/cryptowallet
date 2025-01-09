@@ -25,11 +25,7 @@ import org.springframework.test.context.ActiveProfiles;
 class UserControllerTest {
     @Autowired
     private UsersDb usersDb;
-
-    private final ResponseSpecification responseSpecification = new ResponseSpecBuilder()
-            .log(LogDetail.ALL)
-            .build();
-
+    
     @Test
     @DisplayName("Регистрация пользователя")
     void SignUpSuccess() {
