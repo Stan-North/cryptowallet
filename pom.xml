@@ -22,6 +22,7 @@
 		<openapi.version>2.6.0</openapi.version>
 		<okhttp.version>4.12.0</okhttp.version>
 		<jsonpath.version>2.9.0</jsonpath.version>
+		<rest.assured.version>5.4.0</rest.assured.version>
 	</properties>
 
 	<dependencies>
@@ -62,7 +63,7 @@
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
-			<version>5.4.0</version>
+			<version>${rest-assured.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
